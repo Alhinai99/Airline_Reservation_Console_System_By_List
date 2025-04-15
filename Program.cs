@@ -122,7 +122,7 @@
 
         static void DisplayWelcomeMessage()
         {
-            // Implementation here
+            Console.WriteLine("=====Welcome to the Airline Reservation System!=========");
         }
 
         //================= Main Menu =================
