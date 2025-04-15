@@ -244,22 +244,23 @@
         // ================ Flight Booking =================
         static string BookFlight(string passengerName, string flightCode = "Default001")
         {
-            // Implementation here
-            return "";
+            string bookingID = GenerateBookingID(passengerName);
+            bookingIDs.Add(bookingID);
+            passengerNames.Add(passengerName);
+            bookedFlightCodes.Add(flightCode);
+            return bookingID;
         }
 
         //================= Flight Code Validation ===========
         static bool ValidateFlightCode(string flightCode)
         {
-            // Implementation here
-            return false;
+            return flightCodes.Contains(flightCode);
         }
 
         //================ Booking ID Generation ===========
         static string GenerateBookingID(string passengerName)
         {
-            // Implementation here
-            return "";
+            return "BID" + (bookingIDs.Count + 1).ToString("D2");
         }
 
         //=============== Flight Details ==================
