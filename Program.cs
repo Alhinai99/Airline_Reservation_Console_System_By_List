@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        // Flight data using lists
+        // Flight data 
         static List<string> flightCodes = new List<string>();
         static List<string> fromCities = new List<string>();
         static List<string> toCities = new List<string>();
@@ -10,7 +10,7 @@
         static List<int> durations = new List<int>();
         static List<int> fare = new List<int>();
 
-        // Booking data using lists
+        // Booking data 
         static List<string> bookingIDs = new List<string>();
         static List<string> passengerNames = new List<string>();
         static List<string> bookedFlightCodes = new List<string>();
@@ -19,7 +19,7 @@
 
         static void StartSystem()
         {
-            DisplayWelcomeMessage();
+            DisplayWelcomeMessage(); //call function to display welcome message
 
 
             while (true)
@@ -57,29 +57,29 @@
                         }
                         break;
 
-                    case 2:
+                    case 2: // Cancel a Booking
                         Console.Write("Enter passenger name to cancel booking: ");
                         string passengerToCancel = null;
                         CancelFlightBooking(out passengerToCancel);
                         break;
 
-                    case 3:
+                    case 3: // View All Flights
                         DisplayAllFlights();
                         break;
 
-                    case 4:
+                    case 4: // View Flight Details
                         Console.Write("Enter flight code: ");
                         string fcode = Console.ReadLine();
                         DisplayFlightDetails(fcode);
                         break;
 
-                    case 5:
+                    case 5: // Search Bookings by Destination
                         Console.Write("Enter destination city: ");
                         string city = Console.ReadLine();
                         SearchBookingsByDestination(city);
                         break;
 
-                    case 6:
+                    case 6: // Add Flight
                         Console.WriteLine("Adding a new flight...");
                         Console.Write("Flight Code: ");
                         string newFlightCode = Console.ReadLine();
@@ -96,7 +96,7 @@
                         AddFlight(newFlightCode, fromCity, toCity, departureTime, duration, price);
                         break;
 
-                    case 7:
+                    case 7: // Update Flight Departure
                         Console.Write("Enter flight code to update: ");
                         string updateCode = Console.ReadLine();
                         Console.Write("Enter new departure time (yyyy-mm-dd hh:mm): ");
@@ -104,11 +104,11 @@
                         UpdateFlightDeparture(ref newDepartureTime);
                         break;
 
-                    case 8:
+                    case 8: // Exit
                         ExitApplication();
                         return;
 
-                    default:
+                    default: // Invalid Option
                         Console.WriteLine("Invalid option. Try again.");
                         break;
                 }
@@ -154,7 +154,7 @@
         static void AddFlight(string flightCode, string fromCity, string toCity,
                              DateTime departureTime, int duration, int price)
         {
-            flightCodes.Add(flightCode);
+            flightCodes.Add(flightCode); 
             fromCities.Add(fromCity);
             toCities.Add(toCity);
             departureTimes.Add(departureTime);
@@ -165,7 +165,7 @@
         // ================= Flight Display ==================
         static void DisplayAllFlights()
         {
-            for (int i = 0; i < flightCodes.Count; i++)
+            for (int i = 0; i < flightCodes.Count; i++) 
             {
                 Console.WriteLine("Flight Code: " + flightCodes[i]);
                 Console.WriteLine("From: " + fromCities[i]);
@@ -180,8 +180,8 @@
         //================ Flight Search ===========
         static bool FindFlightByCode(string code)
         {
-            int index = flightCodes.IndexOf(code);
-            if (index != -1)
+            int index = flightCodes.IndexOf(code); 
+            if (index != -1) 
             {
                 Console.WriteLine("Flight found: " + flightCodes[index]);
                 Console.WriteLine("From: " + fromCities[index]);
@@ -210,16 +210,16 @@
         //================= Booking Cancellation ===========
         public static void CancelFlightBooking(out string canceled)
         {
-            canceled = null;
-            Console.Write("Enter passenger name to cancel booking: ");
+            canceled = null; // Initialize the canceled variable
+            Console.Write("Enter passenger name to cancel booking: "); 
             canceled = Console.ReadLine();
-            bool found = false;
+            bool found = false; 
 
             for (int i = 0; i < passengerNames.Count; i++)
             {
-                if (passengerNames[i] == canceled)
+                if (passengerNames[i] == canceled) // check if the name matches
                 {
-                    if (ConfirmAction($"cancel booking for {passengerNames[i]}"))
+                    if (ConfirmAction($"cancel booking for {passengerNames[i]}")) 
                     {
                         bookingIDs.RemoveAt(i);
                         passengerNames.RemoveAt(i);
@@ -244,7 +244,7 @@
         // ================ Flight Booking =================
         static string BookFlight(string passengerName, string flightCode = "Default001")
         {
-            string bookingID = GenerateBookingID(passengerName);
+            string bookingID = GenerateBookingID(passengerName); // Generate a unique booking ID by calling the function
             bookingIDs.Add(bookingID);
             passengerNames.Add(passengerName);
             bookedFlightCodes.Add(flightCode);
@@ -254,19 +254,19 @@
         //================= Flight Code Validation ===========
         static bool ValidateFlightCode(string flightCode)
         {
-            return flightCodes.Contains(flightCode);
+            return flightCodes.Contains(flightCode); // Check if the flight code exists in the list
         }
 
         //================ Booking ID Generation ===========
         static string GenerateBookingID(string passengerName)
         {
-            return "BID" + (bookingIDs.Count + 1).ToString("D2");
+            return "BID" + (bookingIDs.Count + 1).ToString("D2"); // Generate a unique booking ID , ("D2") to show only two digits number 00
         }
 
         //=============== Flight Details ==================
         static void DisplayFlightDetails(string code)
         {
-            int index = flightCodes.IndexOf(code);
+            int index = flightCodes.IndexOf(code); // Find the index of the flight code
             if (index != -1)
             {
                 Console.WriteLine("Flight Code: " + flightCodes[index]);
@@ -277,11 +277,11 @@
                 Console.WriteLine("Fare: " + fare[index]);
 
                 Console.WriteLine("Booking Details: ");
-                for (int i = 0; i < bookedFlightCodes.Count; i++)
+                for (int i = 0; i < bookedFlightCodes.Count; i++) 
                 {
                     if (bookedFlightCodes[i] == code)
                     {
-                        Console.WriteLine("Booking ID: " + bookingIDs[i]);
+                        Console.WriteLine("Booking ID: " + bookingIDs[i]); 
                         Console.WriteLine("Passenger Name: " + passengerNames[i]);
                     }
                 }
@@ -291,9 +291,9 @@
         // ============== Search Bookings destination =================
         static void SearchBookingsByDestination(string toCity)
         {
-            for (int i = 0; i < flightCodes.Count; i++)
+            for (int i = 0; i < flightCodes.Count; i++) 
             {
-                if (toCities[i] == toCity)
+                if (toCities[i] == toCity) //check the city name
                 {
                     Console.WriteLine("Flight found: " + flightCodes[i]);
                     Console.WriteLine("From: " + fromCities[i]);
@@ -318,37 +318,37 @@
         //============== Fare Calculation =================
         static int CalculateFare(int basePrice, int numTickets)
         {
-            return basePrice * numTickets;
+            return basePrice * numTickets; // Calculate total fare if (int)
         }
 
         static double CalculateFare(double basePrice, int numTickets)
         {
-            return basePrice * numTickets;
+            return basePrice * numTickets; // Calculate total fare if (double)
         }
 
         static int CalculateFare(int basePrice, int numTickets, int discount)
         {
             int total = basePrice * numTickets;
-            return total - (total * discount / 100);
+            return total - (total * discount / 100); // Calculate total fare with discount
         }
 
         //================ Confirm Action =================
         static bool ConfirmAction(string action)
         {
-            Console.Write($"Are you sure you want to {action}? (y/n): ");
+            Console.Write($"Are you sure you want to {action}? (y/n): "); 
             string input = Console.ReadLine().ToLower();
-            while (input != "y" && input != "n")
+            while (input != "y" && input != "n") //check the input 
             {
                 Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
-                input = Console.ReadLine().ToLower();
+                input = Console.ReadLine().ToLower(); 
             }
             return input == "y";
         }
-
+        //================ Main Function =================
         static void Main(string[] args)
         {
             {
-                StartSystem();
+                StartSystem(); // Start the system
             }
         }
 
