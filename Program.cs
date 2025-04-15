@@ -154,7 +154,12 @@
         static void AddFlight(string flightCode, string fromCity, string toCity,
                              DateTime departureTime, int duration, int price)
         {
-            // Implementation here
+            flightCodes.Add(flightCode);
+            fromCities.Add(fromCity);
+            toCities.Add(toCity);
+            departureTimes.Add(departureTime);
+            durations.Add(duration);
+            fare.Add(price);
         }
 
         // ================= Flight Display ==================
