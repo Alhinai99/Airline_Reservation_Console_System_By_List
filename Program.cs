@@ -318,27 +318,31 @@
         //============== Fare Calculation =================
         static int CalculateFare(int basePrice, int numTickets)
         {
-            // Implementation here
-            return 0;
+            return basePrice * numTickets;
         }
 
         static double CalculateFare(double basePrice, int numTickets)
         {
-            // Implementation here
-            return 0;
+            return basePrice * numTickets;
         }
 
         static int CalculateFare(int basePrice, int numTickets, int discount)
         {
-            // Implementation here
-            return 0;
+            int total = basePrice * numTickets;
+            return total - (total * discount / 100);
         }
 
         //================ Confirm Action =================
         static bool ConfirmAction(string action)
         {
-            // Implementation here
-            return false;
+            Console.Write($"Are you sure you want to {action}? (y/n): ");
+            string input = Console.ReadLine().ToLower();
+            while (input != "y" && input != "n")
+            {
+                Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
+                input = Console.ReadLine().ToLower();
+            }
+            return input == "y";
         }
 
         static void Main(string[] args)
