@@ -266,7 +266,26 @@
         //=============== Flight Details ==================
         static void DisplayFlightDetails(string code)
         {
-            // Implementation here
+            int index = flightCodes.IndexOf(code);
+            if (index != -1)
+            {
+                Console.WriteLine("Flight Code: " + flightCodes[index]);
+                Console.WriteLine("From: " + fromCities[index]);
+                Console.WriteLine("To: " + toCities[index]);
+                Console.WriteLine("Departure: " + departureTimes[index]);
+                Console.WriteLine("Duration: " + durations[index] + " hours");
+                Console.WriteLine("Fare: " + fare[index]);
+
+                Console.WriteLine("Booking Details: ");
+                for (int i = 0; i < bookedFlightCodes.Count; i++)
+                {
+                    if (bookedFlightCodes[i] == code)
+                    {
+                        Console.WriteLine("Booking ID: " + bookingIDs[i]);
+                        Console.WriteLine("Passenger Name: " + passengerNames[i]);
+                    }
+                }
+            }
         }
 
         // ============== Search Bookings =================
