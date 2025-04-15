@@ -146,7 +146,8 @@
         //================= Exit Application =================
         static void ExitApplication()
         {
-            // Implementation here
+            Console.WriteLine("Thank you for using the Airline Reservation System. Goodbye!");
+            return;
         }
 
         //================= Flight add =================
