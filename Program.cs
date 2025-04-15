@@ -197,14 +197,48 @@
         //================ Flight Departure Update ===========
         static void UpdateFlightDeparture(ref DateTime departure)
         {
-            // Implementation here
+            Console.WriteLine("Enter flight code to update: ");
+            string flightCode = Console.ReadLine();
+            int index = flightCodes.IndexOf(flightCode);
+            if (index != -1)
+            {
+                departureTimes[index] = departure;
+                Console.WriteLine("Flight departure updated successfully.");
+            }
         }
 
         //================= Booking Cancellation ===========
         public static void CancelFlightBooking(out string canceled)
         {
             canceled = null;
-            // Implementation here
+            Console.Write("Enter passenger name to cancel booking: ");
+            canceled = Console.ReadLine();
+            bool found = false;
+
+            for (int i = 0; i < passengerNames.Count; i++)
+            {
+                if (passengerNames[i] == canceled)
+                {
+                    if (ConfirmAction($"cancel booking for {passengerNames[i]}"))
+                    {
+                        bookingIDs.RemoveAt(i);
+                        passengerNames.RemoveAt(i);
+                        bookedFlightCodes.RemoveAt(i);
+                        found = true;
+                        Console.WriteLine("Booking cancelled successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Booking cancellation aborted.");
+                    }
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("No booking found for the given passenger name.");
+            }
         }
 
         // ================ Flight Booking =================
