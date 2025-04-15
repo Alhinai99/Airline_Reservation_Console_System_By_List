@@ -36,9 +36,9 @@
                         {
                             code = "Default001";
                         }
-                        if (ValidateFlightCode(code))
+                        if (ValidateFlightCode(code)) //chck if the flgiht code is validate 
                         {
-                            string bookid = BookFlight(name, code);
+                            string bookid = BookFlight(name, code); // call function to book flight with the input entered early (name and code)
                             Console.WriteLine($"Booking successful! Booking ID: {bookid}");
 
                             // Calculate fare
@@ -47,15 +47,24 @@
                             int basePrice = fare[flightCodes.IndexOf(code)];
                             Console.Write("Enter discount (0 if none): ");
                             int discount = int.Parse(Console.ReadLine());
+                            if (discount != 0)
+                            {
+                                int totalFare = CalculateFare(basePrice, numTickets, discount); // Calculate total fare with discount
 
-                            int totalFare = CalculateFare(basePrice, numTickets, discount);
-                            Console.WriteLine($"Total fare: ${totalFare}");
+                                Console.WriteLine($"Total fare: ${totalFare}");
+                            }
+                            else
+                            {
+                                double totalFare = CalculateFare(basePrice, numTickets); // Calculate total fare
+                                Console.WriteLine($"Total fare: ${totalFare}");
+                            }
                         }
                         else
                         {
                             Console.WriteLine("Invalid flight code.");
                         }
-                        break;
+                            break;
+                        
 
                     case 2: // Cancel a Booking
                         Console.Write("Enter passenger name to cancel booking: ");
