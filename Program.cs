@@ -288,10 +288,31 @@
             }
         }
 
-        // ============== Search Bookings =================
+        // ============== Search Bookings destination =================
         static void SearchBookingsByDestination(string toCity)
         {
-            // Implementation here
+            for (int i = 0; i < flightCodes.Count; i++)
+            {
+                if (toCities[i] == toCity)
+                {
+                    Console.WriteLine("Flight found: " + flightCodes[i]);
+                    Console.WriteLine("From: " + fromCities[i]);
+                    Console.WriteLine("To: " + toCities[i]);
+                    Console.WriteLine("Departure: " + departureTimes[i]);
+                    Console.WriteLine("Duration: " + durations[i] + " hours");
+                    Console.WriteLine("Price: $" + fare[i]);
+
+                    Console.WriteLine("Bookings for this flight:");
+                    for (int j = 0; j < bookedFlightCodes.Count; j++)
+                    {
+                        if (bookedFlightCodes[j] == flightCodes[i])
+                        {
+                            Console.WriteLine($"- {passengerNames[j]} (Booking ID: {bookingIDs[j]})");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
 
         //============== Fare Calculation =================
