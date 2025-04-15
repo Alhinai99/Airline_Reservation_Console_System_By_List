@@ -180,7 +180,17 @@
         //================ Flight Search ===========
         static bool FindFlightByCode(string code)
         {
-            // Implementation here
+            int index = flightCodes.IndexOf(code);
+            if (index != -1)
+            {
+                Console.WriteLine("Flight found: " + flightCodes[index]);
+                Console.WriteLine("From: " + fromCities[index]);
+                Console.WriteLine("To: " + toCities[index]);
+                Console.WriteLine("Departure: " + departureTimes[index]);
+                Console.WriteLine("Duration: " + durations[index] + " hours");
+                Console.WriteLine("Price: $" + fare[index]);
+                return true;
+            }
             return false;
         }
 
