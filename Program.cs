@@ -128,8 +128,19 @@
         //================= Main Menu =================
         static int ShowMainMenu()
         {
-            // Implementation here
-            return 0;
+            Console.WriteLine("=====Main Menu=====");
+            Console.WriteLine("1. Book a Flight");
+            Console.WriteLine("2. Cancel a Booking");
+            Console.WriteLine("3. View All Flights");
+            Console.WriteLine("4. View Flight Details (by flight code)");
+            Console.WriteLine("5. Search Bookings by Destination");
+            Console.WriteLine("6. Add flight");
+            Console.WriteLine("7. Update Flight Departure");
+            Console.WriteLine("8. Exit");
+            Console.Write("Select an option (1-8): ");
+            int input = int.Parse(Console.ReadLine());
+            Console.Clear();
+            return input;
         }
 
         //================= Exit Application =================
