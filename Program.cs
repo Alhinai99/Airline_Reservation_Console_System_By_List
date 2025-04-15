@@ -165,7 +165,16 @@
         // ================= Flight Display ==================
         static void DisplayAllFlights()
         {
-            // Implementation here
+            for (int i = 0; i < flightCodes.Count; i++)
+            {
+                Console.WriteLine("Flight Code: " + flightCodes[i]);
+                Console.WriteLine("From: " + fromCities[i]);
+                Console.WriteLine("To: " + toCities[i]);
+                Console.WriteLine("Departure: " + departureTimes[i]);
+                Console.WriteLine("Duration: " + durations[i] + " hours");
+                Console.WriteLine("Price: $" + fare[i]);
+                Console.WriteLine();
+            }
         }
 
         //================ Flight Search ===========
